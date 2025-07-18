@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <title>Tigmanshu Kumar - About Me</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(175deg, #f8c538, #e5b43c);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: white;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #436a84;
+      }
+
+      .logo::before {
+        content: "▶";
+        margin-right: 10px;
+        transform: rotate(90deg);
+        font-size: 20px;
+      }
+
+      .nav {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav a:hover {
+        color: #436a84;
+      }
+
+      .nav a.active {
+        color: #436a84;
+      }
+
+      .nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #436a84;
+      }
+
+      /* Main Content */
+      .main-content {
+        display: flex;
+        padding: 60px 40px;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .profile-image {
+        flex: 0 0 300px;
+        height: 400px;
+        background: linear-gradient(135deg, #436a84, #000);
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.02);
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .about-title {
+        font-size: 48px;
+        font-weight: bold;
+        color: #4a5568;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+      }
+
+      .name-title {
+        font-size: 18px;
+        color: #43708f;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .description {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #718096;
+        margin-bottom: 40px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        background: #f7fafc;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4a5568;
+        text-decoration: none;
+        font-size: 18px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Sections */
+      .section {
+        padding: 40px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .section h2 {
+        font-size: 32px;
+        color: #4a5568;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .section h3 {
+        font-size: 24px;
+        color: #43708f;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .section p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #718096;
+        margin-bottom: 20px;
+      }
+
+      /* Article - Hobbies */
+      .hobbies-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .hobbies-list li {
+        background: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border-left: 4px solid #436a84;
+        font-size: 16px;
+        color: #4a5568;
+      }
+
+      /* Table */
+      .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .schedule-table th,
+      .schedule-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .schedule-table th {
+        background: #436a84;
+        color: white;
+        font-weight: 600;
+      }
+
+      .schedule-table tr:hover {
+        background: #f8f9fa;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #4a5568;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #436a84;
+      }
+
+      .submit-btn {
+        background: #436a84;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background: #365a75;
+      }
+
+      /* Video Section */
+      .video-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .video-container iframe {
+        border-radius: 10px;
+      }
+
+      /* Footer */
+      .tooltip-container {
+        --background-light: #436a84;
+        --background-dark: #000000;
+        --text-color-dark: #ffffff;
+
+        position: relative;
+        background: #436a84;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 17px;
+        text-align: center;
+        padding: 0.7em 1.8em;
+        color: white;
+      }
+
+      .tooltip {
+        position: absolute;
+        top: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.6em 1em;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
+        border-radius: 40px;
+        background: var(--background-light);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .tooltip::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%);
+        border-style: solid;
+        border-width: 8px 8px 0;
+        border-color: var(--background-light) transparent transparent;
+      }
+
+      .tooltip-container:hover {
+        background: black;
+        color: white;
+        
+      }
+
+      .tooltip-container:hover .tooltip {
+        top: -120%;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          gap: 20px;
+          padding: 20px;
+        }
+
+        .nav {
+          gap: 20px;
+        }
+
+        .main-content {
+          flex-direction: column;
+          padding: 40px 20px;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .profile-image {
+          width: auto;
+          height: auto;
+        }
+
+        .about-title {
+          font-size: 36px;
+        }
+
+        .social-links {
+          justify-content: center;
+          margin-bottom: 0px;
+        }
+
+        .section {
+          padding: 20px;
+        }
+
+        .schedule-table {
+          font-size: 14px;
+        }
+
+        .video-container iframe {
+          width: 100%;
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header with name and role -->
+      <header class="header">
+        <div class="logo">Tigmanshu Kumar</div>
+        <nav>
+          <ul class="nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="profile-image">
+          <img
+            src="https://i.postimg.cc/wTpRND0f/34.png"
+            alt="Tigmanshu Kumar"
+          />
+        </div>
+        <div class="content">
+          <h1 class="about-title">ABOUT ME</h1>
+          <h2 class="name-title">TIGMANSHU KUMAR - FULL STACK DEVELOPER</h2>
+          <p class="description">
+            I am a Full Stack Developer with five years of programming
+            experience and a keen interest in Cybersecurity and Ethical Hacking.
+            I create secure and efficient web applications and possess
+            intermediate skills in C++, which enhance my grasp of fundamental
+            programming concepts and system-level thinking.
+          </p>
+          <div class="social-links">
+            <a
+              href="https://github.com/Tigmanshukumar"
+              target="_blank"
+              title="github"
+              ><i class="fa fa-github" style="font-size: 36px; color: black"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/tigmanshu-kumar-a774082b7/"
+              target="_blank"
+              title="linkedin"
+              ><i
+                class="fa fa-linkedin-square"
+                style="font-size: 36px; color: #0077b5"
+              ></i
+            ></a>
+            <a
+              href="https://www.instagram.com/_tigmanshu_/"
+              target="_blank"
+              title="Instagram"
+              ><i
+                class="fa fa-instagram"
+                style="font-size: 36px; color: red"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </main>
+
+      <!-- Section: Short Introduction -->
+      <section class="section">
+        <h2>Introduction</h2>
+        <p>
+          Welcome to my portfolio! I'm passionate about creating innovative web
+          solutions that combine functionality with security. My journey in
+          programming started 5 years ago, and I've been constantly learning and
+          evolving ever since. I believe in writing clean, maintainable code and
+          staying updated with the latest technologies in the ever-changing
+          world of web development.
+        </p>
+      </section>
+
+      <!-- Article: Hobbies -->
+      <article class="section">
+        <h2>My Hobbies</h2>
+        <h3>Things I Love to Do</h3>
+        <ul class="hobbies-list">
+          <li>🚀 Exploring new programming languages and frameworks</li>
+          <li>🔐 Cybersecurity research and ethical hacking challenges</li>
+          <li>
+            📚 Reading tech blogs and staying updated with industry trends
+          </li>
+          <li>🎮 Gaming and analyzing game mechanics and design patterns</li>
+          <li>
+            🏃‍♂️ Fitness and outdoor activities for maintaining work-life balance
+          </li>
+        </ul>
+      </article>
+
+      <!-- Table: Weekly Learning Schedule -->
+      <section class="section">
+        <h2>Weekly Learning Schedule</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Topic</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Bootstrap & Responsive Web Design</td>
+              <td>2 hours</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>C++ Advanced Concepts & STL</td>
+              <td>2 hours</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>Networking Protocols & Configurations</td>
+              <td>1.5 hours</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>Cybersecurity Fundamentals & Practice</td>
+              <td>2 hours</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>Full Stack Development (MERN Stack Focus)</td>
+              <td>2 hours</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>Read AI/ML Blogs & Research Papers</td>
+              <td>30 Mins</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>Work on AI/ML or Full Stack Projects</td>
+              <td>4 hours</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Contact Form -->
+      <section class="section">
+        <h2>Get In Touch</h2>
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter your email address"
+            />
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </section>
+
+      <!-- Embedded Video -->
+      <section class="section">
+        <h2>Featured Video</h2>
+        <p>Check out this video:</p>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/M4f23--Owvk?si=3XzWIlj7JUtUJPH6"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="tooltip-container">
+          <span class="tooltip">tigmanshukumar5@gmail.com</span>
+          <span class="text">Contact Us</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
