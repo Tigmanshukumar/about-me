@@ -1,6 +1,6 @@
 # Tigmanshu Kumar - Personal Portfolio
 
->Enrollement Number - 2451261940
+>Syudent ID - 1401/INFI25/018
 
 
 Welcome to the source code for my personal portfolio website!
